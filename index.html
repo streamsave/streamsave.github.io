@@ -4,51 +4,93 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download</title>
+	<script src="https://streamtape.com/js/jquery.min.js"></script>
+	<link rel="icon" type="image/png" sizes="16x16" href="https://streamtape.com/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"></link>
+
+    <title>Streamtape : Download Video</title>
 
     <style>
-        .container {
+	
+		body {
+			font-family: 'Comfortaa', cursive;
+		}
+        .containerx {
             max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 0.5em;
         }
 		.videoplayer{
 			background-color: #000000;
-			border-radius:5px
-
 		}
         iframe {
-            width:100%;
-            height:280px;
-            border-radius:5px
+			width: 100%;
         }
+		.bg-purple {
+			background-color: #47408f;
+			color: #fff;
+		}
+		.logo {
+			max-width:180px;
+			width:100%;
+		}
+
+		@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
     </style>
-</head>
-<body>
 
-
-    <div class="container">
-		<div class="videoplayer">
-			<iframe id="vid" frameborder="0" allowfullscreen="1"></iframe>
-		</div>
-        <script>
+	<script>
 		var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",encode:function(e){var t="";var n,r,i,s,o,u,a;var f=0;e=Base64._utf8_encode(e);while(f<e.length){n=e.charCodeAt(f++);r=e.charCodeAt(f++);i=e.charCodeAt(f++);s=n>>2;o=(n&3)<<4|r>>4;u=(r&15)<<2|i>>6;a=i&63;if(isNaN(r)){u=a=64}else if(isNaN(i)){a=64}t=t+this._keyStr.charAt(s)+this._keyStr.charAt(o)+this._keyStr.charAt(u)+this._keyStr.charAt(a)}return t},decode:function(e){var t="";var n,r,i;var s,o,u,a;var f=0;e=e.replace(/[^A-Za-z0-9\+\/\=]/g,"");while(f<e.length){s=this._keyStr.indexOf(e.charAt(f++));o=this._keyStr.indexOf(e.charAt(f++));u=this._keyStr.indexOf(e.charAt(f++));a=this._keyStr.indexOf(e.charAt(f++));n=s<<2|o>>4;r=(o&15)<<4|u>>2;i=(u&3)<<6|a;t=t+String.fromCharCode(n);if(u!=64){t=t+String.fromCharCode(r)}if(a!=64){t=t+String.fromCharCode(i)}}t=Base64._utf8_decode(t);return t},_utf8_encode:function(e){e=e.replace(/\r\n/g,"\n");var t="";for(var n=0;n<e.length;n++){var r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r)}else if(r>127&&r<2048){t+=String.fromCharCode(r>>6|192);t+=String.fromCharCode(r&63|128)}else{t+=String.fromCharCode(r>>12|224);t+=String.fromCharCode(r>>6&63|128);t+=String.fromCharCode(r&63|128)}}return t},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.length){r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);n++}else if(r>191&&r<224){c2=e.charCodeAt(n+1);t+=String.fromCharCode((r&31)<<6|c2&63);n+=2}else{c2=e.charCodeAt(n+1);c3=e.charCodeAt(n+2);t+=String.fromCharCode((r&15)<<12|(c2&63)<<6|c3&63);n+=3}}return t}}
+	</script>
+</head>
 
-		
-            var url_string = window.location.href;
-            var url = new URL(url_string);
-            var v = url.searchParams.get('v');
-			var blogurl = Base64.decode(v);
-
-
-			
-			document.getElementById("vid").src = "https://webseriesx.000webhostapp.com/embed.php?url=https://"+blogurl+".html";
-
-			
-			
-		</script>
-
-    </div>
+<body  class="d-flex flex-column min-vh-100">
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container">
+				<div class="navbar-brand">
+					<img src="https://streamtape.com/images/Logo@2x.png" class="logo">
+				</div>
+			</div>
+		</nav>
+	</header>
+    <div class="containerx mx-auto my-3 px-3">
+		<div class="videoplayer">
+			<iframe id="vid" frameborder="0" allowfullscreen="1" scrolling="no"></iframe>
+			<script>
+				var url_string = window.location.href;
+				var url = new URL(url_string);
+				var v = url.searchParams.get('v');
+				var blogurl = Base64.decode(v);	
+				document.getElementById("vid").src = "https://webseriesx.000webhostapp.com/embed.php?url=https://"+blogurl+".html";
+			</script>
+		</div>
+		<div class="my-3 mx-auto">	
+			<a href="#" id="downloadvideo" class="btn btn-primary" target="_blank">Download Video</a>
+			<div id="videolink" style="display:none;"></div>
+			<script>
+			var towait = 10;
+			var selector = "#downloadvideo";
+			function counter(){
+				if(towait == 0){
+					$(selector).text("Start Download");
+					var srclink = $('#videolink').text() + '&dl=1';
+					$(selector).attr('href', srclink).prop('href', srclink).prop('disabled', false);
+					return;
+				}
+				$(selector).text("Wait " + towait + " s").prop('disabled', true);
+				towait--;
+				setTimeout(counter, 1000);
+			}
+			$(selector).one('click', function(e){counter(); return false;});
+			</script>
+			<script>
+			document.getElementById('videolink').innerHTML = "https://indo17.000webhostapp.com/embed.php?url=https://"+blogurl+".html";
+			</script>
+		</div>
+	</div>
+    <footer class="mt-auto bg-purple">
+      <div class="container text-center py-3">
+        <small>Copyright © 2021</small>
+      </div>
+    </footer>
 </body>
 </html>
