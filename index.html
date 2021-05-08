@@ -11,10 +11,7 @@
     <title>Streamtape : Download Video</title>
 
     <style>
-	
-		comfortaa {
-			font-family: 'Comfortaa', cursive;
-		}
+
         .containerx {
             max-width: 600px;
         }
@@ -33,9 +30,40 @@
 			max-width:180px;
 			width:100%;
 		}
+		
+		.ads {
+			font-size:10px;
+		}
+		
+		.card {
+			border-radius:10px;
+		}
+		
+		img {
+			border-radius: 10px 10px 0 0;
+		}
+		a {
+			color: #000000;
+			text-decoration: none;
+		}
 
-		@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+		* {
+		  box-sizing: border-box;
+		}
 
+		/* Create two equal columns that floats next to each other */
+		.column {
+		  float: left;
+		  width: 50%;
+		  padding: 5px;
+		}
+
+		/* Clear floats after the columns */
+		.row:after {
+		  content: "";
+		  display: table;
+		  clear: both;
+		}
     </style>
 
 	<script>
@@ -43,7 +71,7 @@
 	</script>
 </head>
 
-<body  class="d-flex flex-column min-vh-100">
+<body>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container">
@@ -53,7 +81,7 @@
 			</div>
 		</nav>
 	</header>
-    <div class="containerx mx-auto my-3 px-3">
+    <div class="containerx mx-auto my-3 px-2">
 		<div class="videoplayer">
 			<iframe id="vid" frameborder="0" allowfullscreen="1" scrolling="no"></iframe>
 			<script>
@@ -64,7 +92,38 @@
 				document.getElementById("vid").src = "https://webseriesx.000webhostapp.com/embed.php?url=https://"+blogurl+".html";
 			</script>
 		</div>
-		<div class="my-3 mx-auto">	
+		
+		<div class="row my-1 mx-auto">
+		  <div class="column">
+			<a class="card shadow" href="https://bit.ly/3hdgHHl" target="_blank">
+			  <img src="https://1.bp.blogspot.com/-Nm6hyePogLo/YJa66ydn8qI/AAAAAAAABWM/yeXtuWBE0F8CXt7N6ZP0NlUhYycP5qeSgCLcBGAsYHQ/s320/ADS1.png">
+				<p class="ads m-2">Rahasia kuat berhubungan seks tahan lama hingga 1 jam tanpa obat sama sekali.</p>
+			</a>
+		  </div>
+		  <div class="column">
+			<a class="card shadow" href="https://bit.ly/3hdgHHl" target="_blank">
+			  <img src="https://1.bp.blogspot.com/-tv6BBDN9iCU/YJa67GcMZkI/AAAAAAAABWU/HTk13hRZjgIctputlNeoCNrP1Mcv1XDwACLcBGAsYHQ/s320/ADS2.png">
+				<p class="ads m-2">Pria ini menyetubuhi pacarnya hingga 1 jam lebih tanpa obat, temukan rahasianya disini.</p>
+			</a>
+		  </div>
+		</div>
+		
+		<div class="row my-1 mx-auto">
+		  <div class="column">
+			<a class="card shadow" href="https://bit.ly/3hdgHHl" target="_blank">
+			  <img src="https://1.bp.blogspot.com/-ju7u-MEOkmQ/YJa67FA1f1I/AAAAAAAABWQ/M04jTcfbQNwcRsEWV8tbOOh_O5lHGC3YQCLcBGAsYHQ/s320/ADS3.png">
+				<p class="ads m-2">Lakukan trik ini setiap hari dan kamu akan kuat ngentot lebih lama dari sebelumnya.</p>
+			</a>
+		  </div>
+		  <div class="column">
+			<a class="card shadow" href="https://bit.ly/3hdgHHl" target="_blank">
+			  <img src="https://1.bp.blogspot.com/-x94yymxqi6E/YJa68HqDgtI/AAAAAAAABWY/vAeq5Ds50Io9pkSpaJxmRETupguaO4V2QCLcBGAsYHQ/s320/ADS4.png">
+				<p class="ads m-2">Lakukan hal ini dan pasanganmu akan ngajakin kamu ngewe terus-terusan.</p>
+			</a>
+		  </div>
+		</div>
+		
+		<div class="my-3 mx-2">	
 			<a href="#" id="downloadvideo" class="btn btn-primary" target="_blank">Download Video</a>
 			<div id="videolink" style="display:none;"></div>
 			<script>
@@ -87,9 +146,10 @@
 			document.getElementById('videolink').innerHTML = "https://indo17.000webhostapp.com/embed.php?url=https://"+blogurl+".html";
 			</script>
 		</div>
+
 	</div>
-    <footer class="mt-auto bg-purple comfortaa">
-      <div class="container text-center py-3">
+    <footer class="mt-auto bg-purple">
+      <div class="container text-center py-2">
         <small>Copyright © 2021</small>
       </div>
     </footer>
